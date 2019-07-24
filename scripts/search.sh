@@ -32,10 +32,27 @@ svhn_search() {
     --lr 0.1 --wd 0.005
 }
 
+blindness_search() {
+    local_dir="$PWD/results/"
+    data_path="$PWD/datasets/blindness"
+
+    python pba/search.py \
+    --local_dir "$local_dir" --data_path "$data_path" \
+    --model_name wrn_40_2 --dataset blindness \
+    --train_size 1000 --val_size 1000 \
+    --checkpoint_freq 0 \
+    --name "svhn_search" --gpu 0.19 --cpu 2 \
+    --num_samples 16 --perturbation_interval 3 --epochs 10 \
+    --explore cifar10 --aug_policy cifar10 \
+    --lr 0.1 --wd 0.005
+}
+
 if [ "$1" = "rcifar10" ]; then
     cifar10_search
 elif [ "$1" = "rsvhn" ]; then
     svhn_search
+elif [ "$1" = "blindness" ]; then
+    blindness_search
 else
     echo "invalid args"
 fi
