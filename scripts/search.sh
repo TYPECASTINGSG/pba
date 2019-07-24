@@ -39,7 +39,7 @@ blindness_search() {
     python pba/search.py \
     --local_dir "$local_dir" --data_path "$data_path" \
     --model_name wrn_40_2 --dataset blindness \
-    --train_size 1000 --val_size 1000 \
+    --train_size 500 --val_size 500 \
     --checkpoint_freq 0 \
     --bs 4 \
     --name "blindness_search" --gpu 0.15 --cpu 2 \
