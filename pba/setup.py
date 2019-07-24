@@ -25,8 +25,8 @@ def create_parser(state):
         help='Directory where dataset is located.')
     parser.add_argument(
         '--dataset',
-        default='cifar10',
-        choices=('cifar10', 'cifar100', 'svhn', 'svhn-full', 'test'))
+        default='blindness',
+        choices=('cifar10', 'cifar100', 'svhn', 'svhn-full', 'test', 'blindness'))
     parser.add_argument(
         '--recompute_dset_stats',
         action='store_true',
