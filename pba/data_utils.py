@@ -298,6 +298,38 @@ class DataSet(object):
         self.val_labels = np.random.randint(0, self.num_classes, (hparams.validation_size))
         self.test_labels = np.random.randint(0, self.num_classes, (test_size))
 
+    def load_retinopathy(self, hparams):
+        tf.logging.info('loading retinopathy...')
+
+        IMAGE_SIZE = 456
+        self.num_classes = 5
+
+        df = pd.read_csv(os.path.join(hparams.data_path, 'v1/train.csv'))
+        tf.logging.info('read train.csv file: {}'.format(df.shape))
+        tf.logging.info('read hparams: {}'.format(hparams))
+
+        trg_df = df[:hparams.train_size]
+        val_df = df[hparams.train_size:hparams.train_size + hparams.validation_size]
+        test_df = df[hparams.test_size:]
+
+        # trg, val, test = df split 70/20/10
+
+        self.num_train = hparams.train_size
+        self.image_size = 
+
+        self.train_images = self.read_images(trg_df)
+        self.val_images = self.read_images(val_df)
+        self.test_images = self.read_images(test_df)
+
+        self.train_labels = self.parse_labels(trg_df)
+        self.val_labels = self.parse_labels(val_df)
+        self.test_labels = self.parse_labels(test_df)
+
+    def read_images(df):
+        return []
+    def parse_labels(df):
+        return []
+
     def load_data(self, hparams):
         """Load raw data from specified dataset.
 
@@ -321,6 +353,8 @@ class DataSet(object):
             self.load_cifar(hparams)
         elif hparams.dataset == 'svhn' or hparams.dataset == 'svhn-full':
             self.load_svhn(hparams)
+        elif hparams.dataset == 'blindness':
+            self.load_retinopathy(hparams)
         elif hparams.dataset == 'test':
             self.load_test(hparams)
         else:
