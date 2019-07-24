@@ -31,6 +31,7 @@ MEANS = {
     'svhn-full_604388': [0.43090966, 0.4302428, 0.44634357],
     'blindness_2564':[0.485, 0.456, 0.406],
     'blindness_1000':[0.485, 0.456, 0.406],
+    'blindness_1500':[0.485, 0.456, 0.406],
     'blindness_500':[0.485, 0.456, 0.406]
 }
 STDS = {
@@ -41,6 +42,7 @@ STDS = {
     'svhn-full_604388': [0.19652855, 0.19832038, 0.19942076],
     'blindness_2564': [0.229, 0.224, 0.225],
     'blindness_1000': [0.229, 0.224, 0.225],
+    'blindness_1500': [0.229, 0.224, 0.225],
     'blindness_500':[0.485, 0.456, 0.406]
 }
 PARAMETER_MAX = 10  # What is the max 'level' a transform could be predicted
