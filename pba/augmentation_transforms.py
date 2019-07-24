@@ -32,6 +32,7 @@ MEANS = {
     'blindness_2564':[0.485, 0.456, 0.406],
     'blindness_1000':[0.485, 0.456, 0.406],
     'blindness_1500':[0.485, 0.456, 0.406],
+    'blindness_2000':[0.485, 0.456, 0.406],
     'blindness_500':[0.485, 0.456, 0.406]
 }
 STDS = {
@@ -43,6 +44,7 @@ STDS = {
     'blindness_2564': [0.229, 0.224, 0.225],
     'blindness_1000': [0.229, 0.224, 0.225],
     'blindness_1500': [0.229, 0.224, 0.225],
+    'blindness_2000': [0.229, 0.224, 0.225],
     'blindness_500':[0.485, 0.456, 0.406]
 }
 PARAMETER_MAX = 10  # What is the max 'level' a transform could be predicted
