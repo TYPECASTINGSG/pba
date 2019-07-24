@@ -15,7 +15,7 @@ eval_cifar100() {
     --local_dir "$local_dir" --data_path "$data_path" \
     --model_name "$1" --dataset "$dataset" \
     --train_size "$size" --val_size 0 \
-    --checkpoint_freq 25 --gpu 1 --cpu 4 \
+    --checkpoint_freq 25 --gpu 1 --cpu 2 \
     --use_hp_policy --hp_policy "$hp_policy" \
     --hp_policy_epochs 200 \
     --aug_policy cifar10 --name "$name" \
