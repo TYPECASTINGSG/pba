@@ -331,8 +331,7 @@ class DataSet(object):
         images = np.empty((len(df), 3, sz, sz))
         labels = np.empty(len(df))
         
-        for row in df.iterrows():
-            i = row[0]
+        for i, row in enumerate(df.iterrows()):
             image = np.array(Image.open(path + '/v1/'+str(sz)+'/'+row[1].id_code+'.png'))
             images[i] = np.moveaxis(image, -1, 0)
             labels[i] = row[1].diagnosis
