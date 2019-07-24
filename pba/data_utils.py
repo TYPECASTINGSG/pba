@@ -300,11 +300,11 @@ class DataSet(object):
 
     def load_retinopathy(self, hparams):
         tf.logging.info('loading retinopathy...')
-        print(hparams)
 
         IMAGE_SIZE = 456
         self.num_classes = 5
 
+        tf.logging.info('reading csv retinopathy... {}'.format(os.path.join(hparams.data_path, 'v1/train.csv')))
         df = pd.read_csv(os.path.join(hparams.data_path, 'v1/train.csv'))
         tf.logging.info('read train.csv file: {}'.format(df.shape))
         tf.logging.info('read hparams: {}'.format(hparams))
