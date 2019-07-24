@@ -300,6 +300,7 @@ class DataSet(object):
 
     def load_retinopathy(self, hparams):
         tf.logging.info('loading retinopathy...')
+        print(hparams)
 
         IMAGE_SIZE = 456
         self.num_classes = 5
@@ -315,7 +316,6 @@ class DataSet(object):
         # trg, val, test = df split 70/20/10
 
         self.num_train = hparams.train_size
-        self.image_size = 
 
         self.train_images = self.read_images(trg_df)
         self.val_images = self.read_images(val_df)
