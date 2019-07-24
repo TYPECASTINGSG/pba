@@ -36,6 +36,8 @@ import pba.augmentation_transforms_hp as augmentation_transforms_pba
 import pba.augmentation_transforms as augmentation_transforms_autoaug
 
 
+import pandas as pd
+
 # pylint:disable=logging-format-interpolation
 
 
