@@ -37,6 +37,7 @@ import pba.augmentation_transforms as augmentation_transforms_autoaug
 
 
 import pandas as pd
+import PIL.Image as Image
 
 # pylint:disable=logging-format-interpolation
 
@@ -321,18 +322,22 @@ class DataSet(object):
 
         self.num_train = hparams.train_size
 
-        self.train_images = self.read_images(trg_df)
-        self.val_images = self.read_images(val_df)
-        self.test_images = self.read_images(test_df)
+        self.train_images, self.train_labels = self.convert_image(trg_df)
+        self.val_images, self.val_labels = self.convert_image(val_df)
+        self.test_images, self.test_labels = self.convert_image(test_df)
 
-        self.train_labels = self.parse_labels(trg_df)
-        self.val_labels = self.parse_labels(val_df)
-        self.test_labels = self.parse_labels(test_df)
 
-    def read_images(self, df):
-        return []
-    def parse_labels(self, df):
-        return []
+    def convert_image(self, df, sz = 456):
+        images = np.empty((len(df), 3, sz, sz))
+        labels = np.empty(len(df))
+        
+        for row in df.iterrows():
+            i = row[0]
+            image = np.array(Image.open('datasets/blindness/v1/'+str(sz)+'/'+row[1].id_code+'.png'))
+            images[i] = np.moveaxis(image, -1, 0)
+            labels[i] = row[1].diagnosis
+        
+        return images, labels.astype(int)
 
     def load_data(self, hparams):
         """Load raw data from specified dataset.
