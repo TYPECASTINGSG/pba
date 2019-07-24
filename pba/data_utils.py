@@ -305,6 +305,8 @@ class DataSet(object):
 
         IMAGE_SIZE = 456
         self.num_classes = 5
+        val_size = 732
+        test_size = 366
 
         tf.logging.info('reading csv retinopathy... {}'.format(os.path.join(hparams.data_path, 'v1/train.csv')))
         df = pd.read_csv(os.path.join(hparams.data_path, 'v1/train.csv'))
@@ -312,10 +314,10 @@ class DataSet(object):
         tf.logging.info('read hparams: {}'.format(hparams))
 
         trg_df = df[:hparams.train_size]
-        val_df = df[hparams.train_size:hparams.train_size + hparams.validation_size]
-        test_df = df[hparams.test_size:]
+        val_df = df[hparams.train_size:hparams.train_size + val_size]
+        test_df = df[hparams.train_size + val_size:hparams.train_size + val_size + test_size]
 
-        # trg, val, test = df split 70/20/10
+        tf.logging.info('dataframe shapes : {} , {} , {}'.format(trg_df.shape, val_df.shape, test_df.shape))
 
         self.num_train = hparams.train_size
 
