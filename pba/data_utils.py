@@ -304,7 +304,7 @@ class DataSet(object):
     def load_retinopathy(self, hparams):
         tf.logging.info('loading retinopathy...')
 
-        IMAGE_SIZE = 456
+        IMAGE_SIZE = 224  #456
         self.num_classes = 5
         val_size = 732
         test_size = 366
@@ -322,9 +322,9 @@ class DataSet(object):
 
         self.num_train = hparams.train_size
 
-        self.train_images, self.train_labels = self.convert_image(trg_df, hparams.data_path)
-        self.val_images, self.val_labels = self.convert_image(val_df, hparams.data_path)
-        self.test_images, self.test_labels = self.convert_image(test_df, hparams.data_path)
+        self.train_images, self.train_labels = self.convert_image(trg_df, hparams.data_path, sz=IMAGE_SIZE)
+        self.val_images, self.val_labels = self.convert_image(val_df, hparams.data_path, sz=IMAGE_SIZE)
+        self.test_images, self.test_labels = self.convert_image(test_df, hparams.data_path, sz=IMAGE_SIZE)
 
 
     def convert_image(self, df, path, sz = 456):
