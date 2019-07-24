@@ -333,7 +333,7 @@ class DataSet(object):
         
         for row in df.iterrows():
             i = row[0]
-            image = np.array(Image.open(path + 'datasets/blindness/v1/'+str(sz)+'/'+row[1].id_code+'.png'))
+            image = np.array(Image.open(path + '/v1/'+str(sz)+'/'+row[1].id_code+'.png'))
             images[i] = np.moveaxis(image, -1, 0)
             labels[i] = row[1].diagnosis
         
