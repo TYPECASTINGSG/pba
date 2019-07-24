@@ -322,18 +322,18 @@ class DataSet(object):
 
         self.num_train = hparams.train_size
 
-        self.train_images, self.train_labels = self.convert_image(trg_df)
-        self.val_images, self.val_labels = self.convert_image(val_df)
-        self.test_images, self.test_labels = self.convert_image(test_df)
+        self.train_images, self.train_labels = self.convert_image(trg_df, hparams.data_path)
+        self.val_images, self.val_labels = self.convert_image(val_df, hparams.data_path)
+        self.test_images, self.test_labels = self.convert_image(test_df, hparams.data_path)
 
 
-    def convert_image(self, df, sz = 456):
+    def convert_image(self, df, path, sz = 456):
         images = np.empty((len(df), 3, sz, sz))
         labels = np.empty(len(df))
         
         for row in df.iterrows():
             i = row[0]
-            image = np.array(Image.open('datasets/blindness/v1/'+str(sz)+'/'+row[1].id_code+'.png'))
+            image = np.array(Image.open(path + 'datasets/blindness/v1/'+str(sz)+'/'+row[1].id_code+'.png'))
             images[i] = np.moveaxis(image, -1, 0)
             labels[i] = row[1].diagnosis
         
