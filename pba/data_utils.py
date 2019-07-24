@@ -329,9 +329,9 @@ class DataSet(object):
         self.val_labels = self.parse_labels(val_df)
         self.test_labels = self.parse_labels(test_df)
 
-    def read_images(df):
+    def read_images(self, df):
         return []
-    def parse_labels(df):
+    def parse_labels(self, df):
         return []
 
     def load_data(self, hparams):
