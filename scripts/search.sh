@@ -27,7 +27,7 @@ svhn_search() {
     --train_size 1000 --val_size 7325 \
     --checkpoint_freq 0 \
     --name "svhn_search" --gpu 0.19 --cpu 2 \
-    --num_samples 16 --perturbation_interval 3 --epochs 160 \
+    --num_samples 16 --perturbation_interval 3 --epochs 2 \
     --explore cifar10 --aug_policy cifar10 --no_cutout \
     --lr 0.1 --wd 0.005
 }
