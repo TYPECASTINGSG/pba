@@ -302,7 +302,7 @@ class DataSet(object):
         self.test_labels = np.random.randint(0, self.num_classes, (test_size))
 
     def load_retinopathy(self, hparams):
-        IMAGE_SIZE = 456
+        IMAGE_SIZE = 224
         self.num_classes = 5
         train_size = hparams.train_size
         val_size = hparams.validation_size
